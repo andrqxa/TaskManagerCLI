@@ -19,6 +19,7 @@
         <maven-compiler-plugin.ver>3.1</maven-compiler-plugin.ver>
         <maven-war-plugin.ver>2.3</maven-war-plugin.ver>
         <maven-dependency-plugin.ver>2.6</maven-dependency-plugin.ver>
+        <hibernate.ver>5.2.16.Final</hibernate.ver>
         <!--end versions-->  
          
     </properties>
@@ -54,6 +55,11 @@
             <artifactId>commons-lang3</artifactId>
             <version>${commons-lang3.ver}</version>
             <type>jar</type>
+        </dependency>
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-core</artifactId>
+            <version>${hibernate.ver}</version>
         </dependency>
     </dependencies>
 
