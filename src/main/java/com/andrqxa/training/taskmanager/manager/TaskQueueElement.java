@@ -17,9 +17,16 @@ package com.andrqxa.training.taskmanager.manager;
 
 import com.andrqxa.training.taskmanager.enums.Status;
 import static com.andrqxa.training.taskmanager.enums.Status.*;
+import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.Optional;
-import java.util.UUID;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
@@ -34,27 +41,45 @@ import org.springframework.stereotype.Component;
  */
 @Component("taskQueueElement")
 @Scope("prototype")
-public class TaskQueueElement implements Comparable<TaskQueueElement> {
+@Entity
+@Table(name = "taskqueue")
+public class TaskQueueElement implements Serializable, Comparable<TaskQueueElement> {
 
-    private final UUID id;
+    @Id
+    @Column(name = "id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private long id;
+
+    @Column(name = "starttime")
     private final LocalDateTime timeStart;
+
+    @Column(name = "finishtime")
     private LocalDateTime timeFinish;
+
+    @Column(name = "status")
     private Status status;
 
     @Autowired
+    @Column(name = "person")
+    @OneToOne(mappedBy = "taskQueueElement")
     private Person person;
 
     @Autowired
+    @Column(name = "task")
+    @OneToOne(mappedBy = "taskQueueElement")
     private Task task;
 
     public TaskQueueElement() {
-        this.id = UUID.randomUUID();
         this.timeStart = LocalDateTime.now();
         this.status = INIT;
     }
 
-    public UUID getId() {
+    public long getId() {
         return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
     }
 
     public LocalDateTime getTimeStart() {
