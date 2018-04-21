@@ -43,7 +43,7 @@ public class Task implements Serializable, Comparable<Task> {
     @Id
     @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private final long id;
+    private long id;
 
     @Column(name = "name")
     private String name;
@@ -51,12 +51,15 @@ public class Task implements Serializable, Comparable<Task> {
     @Column(name = "description")
     private String description;
 
-    public Task(long id) {
-        this.id = id;
+    public Task() {
     }
 
     public long getId() {
         return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
     }
 
     public String getName() {

@@ -44,7 +44,7 @@ public class Person implements Serializable, Comparable<Person> {
     @Id
     @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private final long id;
+    private long id;
 
     @Column(name = "name")
     private String name;
@@ -55,12 +55,16 @@ public class Person implements Serializable, Comparable<Person> {
     @Column(name = "patronic")
     private String patronic;
 
-    public Person(long id) {
-        this.id = id;
+    public Person() {
+
     }
 
     public long getId() {
         return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
     }
 
     public String getName() {
