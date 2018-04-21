@@ -15,8 +15,14 @@
  */
 package com.andrqxa.training.taskmanager.manager;
 
+import java.io.Serializable;
 import java.util.Optional;
-import java.util.UUID;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
@@ -30,17 +36,26 @@ import org.springframework.stereotype.Component;
  */
 @Component("task")
 @Scope("prototype")
-public class Task implements Comparable<Task> {
+@Entity
+@Table(name = "task")
+public class Task implements Serializable, Comparable<Task> {
 
-    private final UUID id;
+    @Id
+    @Column(name = "id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private final long id;
+
+    @Column(name = "name")
     private String name;
+
+    @Column(name = "description")
     private String description;
 
-    public Task() {
-        this.id = UUID.randomUUID();
+    public Task(long id) {
+        this.id = id;
     }
 
-    public UUID getId() {
+    public long getId() {
         return id;
     }
 
