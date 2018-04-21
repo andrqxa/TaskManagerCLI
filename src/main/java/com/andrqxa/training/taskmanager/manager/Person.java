@@ -18,7 +18,12 @@ package com.andrqxa.training.taskmanager.manager;
 import static com.andrqxa.training.taskmanager.enums.Compares.*;
 import java.io.Serializable;
 import java.util.Optional;
-import java.util.UUID;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
@@ -32,18 +37,29 @@ import org.springframework.stereotype.Component;
  */
 @Component("person")
 @Scope("prototype")
+@Entity
+@Table(name = "person")
 public class Person implements Serializable, Comparable<Person> {
 
-    private final UUID id;
+    @Id
+    @Column(name = "id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private final long id;
+
+    @Column(name = "name")
     private String name;
+
+    @Column(name = "surname")
     private String surname;
+
+    @Column(name = "patronic")
     private String patronic;
 
-    public Person() {
-        this.id = UUID.randomUUID();
+    public Person(long id) {
+        this.id = id;
     }
 
-    public UUID getId() {
+    public long getId() {
         return id;
     }
 
