@@ -15,10 +15,24 @@
  */
 package com.andrqxa.training.taskmanager.dao.interfaces;
 
+import com.andrqxa.training.taskmanager.manager.Person;
+import java.util.List;
+
 /**
  *
  * @author Andrey Pugachenko <andrqxa@gmail.com>
  */
 public interface PersonDao {
 
+    Person get(long id);
+
+    List<Person> getBySurname(String surname);
+
+    List<Person> getBySurnameAndName(String surname, String name);
+
+    List<Person> getBySurnameAndNameAndPatronic(String surname, String name, String patronic);
+
+    void add(Person person);
+
+    void delete(long id);
 }

@@ -16,6 +16,7 @@
 package com.andrqxa.training.taskmanager.dao.interfaces;
 
 import com.andrqxa.training.taskmanager.manager.Task;
+import java.util.List;
 
 /**
  *
@@ -25,7 +26,7 @@ public interface TaskDao {
 
     Task get(long id);
 
-    Task getByName(String name);
+    List<Task> getByName(String name);
 
     void add(Task task);
 
