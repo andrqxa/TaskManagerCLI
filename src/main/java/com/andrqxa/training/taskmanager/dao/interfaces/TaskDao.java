@@ -15,10 +15,20 @@
  */
 package com.andrqxa.training.taskmanager.dao.interfaces;
 
+import com.andrqxa.training.taskmanager.manager.Task;
+
 /**
  *
  * @author Andrey Pugachenko <andrqxa@gmail.com>
  */
 public interface TaskDao {
+
+    Task get(long id);
+
+    Task getByName(String name);
+
+    void add(Task task);
+
+    void delete(long id);
 
 }
