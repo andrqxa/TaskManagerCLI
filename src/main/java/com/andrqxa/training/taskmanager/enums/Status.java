@@ -26,5 +26,6 @@ public enum Status {
     CANCELLED,
     DONE,
     DELEGATED,
-    CHANGED
+    CHANGED,
+    DELETED
 }
