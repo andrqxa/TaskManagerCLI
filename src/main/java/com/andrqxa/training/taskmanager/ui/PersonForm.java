@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.andrqxa.training.ui;
+package com.andrqxa.training.taskmanager.ui;
 
 /**
  *

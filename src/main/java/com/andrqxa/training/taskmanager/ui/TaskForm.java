@@ -13,18 +13,18 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.andrqxa.training.ui;
+package com.andrqxa.training.taskmanager.ui;
 
 /**
  *
  * @author Andrey Pugachenko <andrqxa@gmail.com>
  */
-public class TaskQueueListForm extends javax.swing.JFrame {
+public class TaskForm extends javax.swing.JFrame {
 
     /**
-     * Creates new form TaskQueueListForm
+     * Creates new form TaskForm
      */
-    public TaskQueueListForm() {
+    public TaskForm() {
         initComponents();
     }
 
@@ -70,19 +70,19 @@ public class TaskQueueListForm extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(TaskQueueListForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TaskForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(TaskQueueListForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TaskForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(TaskQueueListForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TaskForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(TaskQueueListForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TaskForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(() -> {
-            new TaskQueueListForm().setVisible(true);
+            new TaskForm().setVisible(true);
         });
     }
 
