@@ -35,4 +35,6 @@ public interface PersonDao {
     void add(Person person);
 
     void delete(long id);
+
+    void clearPersonInfo(Person person);
 }
