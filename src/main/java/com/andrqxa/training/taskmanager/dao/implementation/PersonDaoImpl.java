@@ -16,9 +16,12 @@
 package com.andrqxa.training.taskmanager.dao.implementation;
 
 import com.andrqxa.training.taskmanager.dao.interfaces.PersonDao;
+import com.andrqxa.training.taskmanager.extensions.PersonNotExists;
 import com.andrqxa.training.taskmanager.manager.Person;
 import com.andrqxa.training.taskmanager.utils.HibernateUtil;
 import java.util.List;
+import java.util.Optional;
+import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 
 /**
@@ -34,22 +37,27 @@ public class PersonDaoImpl implements PersonDao {
     }
 
     @Override
-    public Person get(long id) {
+    public Person get(long id) throws PersonNotExists {
+        Optional<Person> result = Optional.empty();
+        try (Session session = sessionFactory.openSession()) {
+
+        }
+
+        return result.orElseThrow(() -> new PersonNotExists(String.format("There is not person with %s id", id)));
+    }
+
+    @Override
+    public List<Person> getBySurname(String surname) throws PersonNotExists {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public List<Person> getBySurname(String surname) {
+    public List<Person> getBySurnameAndName(String surname, String name) throws PersonNotExists {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public List<Person> getBySurnameAndName(String surname, String name) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public List<Person> getBySurnameAndNameAndPatronic(String surname, String name, String patronic) {
+    public List<Person> getBySurnameAndNameAndPatronic(String surname, String name, String patronic) throws PersonNotExists {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
@@ -59,12 +67,12 @@ public class PersonDaoImpl implements PersonDao {
     }
 
     @Override
-    public void delete(long id) {
+    public void delete(long id) throws PersonNotExists {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public void clearPersonInfo(Person person) {
+    public void clearPersonInfo(Person person) throws PersonNotExists {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 

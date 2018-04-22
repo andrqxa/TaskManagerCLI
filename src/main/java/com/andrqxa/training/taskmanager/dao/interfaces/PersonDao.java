@@ -15,6 +15,7 @@
  */
 package com.andrqxa.training.taskmanager.dao.interfaces;
 
+import com.andrqxa.training.taskmanager.extensions.PersonNotExists;
 import com.andrqxa.training.taskmanager.manager.Person;
 import java.util.List;
 
@@ -24,17 +25,17 @@ import java.util.List;
  */
 public interface PersonDao {
 
-    Person get(long id);
+    Person get(long id) throws PersonNotExists;
 
-    List<Person> getBySurname(String surname);
+    List<Person> getBySurname(String surname) throws PersonNotExists;
 
-    List<Person> getBySurnameAndName(String surname, String name);
+    List<Person> getBySurnameAndName(String surname, String name) throws PersonNotExists;
 
-    List<Person> getBySurnameAndNameAndPatronic(String surname, String name, String patronic);
+    List<Person> getBySurnameAndNameAndPatronic(String surname, String name, String patronic) throws PersonNotExists;
 
     void add(Person person);
 
-    void delete(long id);
+    void delete(long id) throws PersonNotExists;
 
-    void clearPersonInfo(Person person);
+    void clearPersonInfo(Person person) throws PersonNotExists;
 }
