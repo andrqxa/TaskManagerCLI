@@ -17,13 +17,21 @@ package com.andrqxa.training.taskmanager.dao.implementation;
 
 import com.andrqxa.training.taskmanager.dao.interfaces.PersonDao;
 import com.andrqxa.training.taskmanager.manager.Person;
+import com.andrqxa.training.taskmanager.utils.HibernateUtil;
 import java.util.List;
+import org.hibernate.SessionFactory;
 
 /**
  *
  * @author Andrey Pugachenko <andrqxa@gmail.com>
  */
 public class PersonDaoImpl implements PersonDao {
+
+    private final SessionFactory sessionFactory;
+
+    public PersonDaoImpl() {
+        sessionFactory = HibernateUtil.getSessionFactory();
+    }
 
     @Override
     public Person get(long id) {

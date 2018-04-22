@@ -17,13 +17,21 @@ package com.andrqxa.training.taskmanager.dao.implementation;
 
 import com.andrqxa.training.taskmanager.dao.interfaces.TaskDao;
 import com.andrqxa.training.taskmanager.manager.Task;
+import com.andrqxa.training.taskmanager.utils.HibernateUtil;
 import java.util.List;
+import org.hibernate.SessionFactory;
 
 /**
  *
  * @author Andrey Pugachenko <andrqxa@gmail.com>
  */
 public class TaskDaoImpl implements TaskDao {
+
+    private final SessionFactory sessionFactory;
+
+    public TaskDaoImpl() {
+        sessionFactory = HibernateUtil.getSessionFactory();
+    }
 
     @Override
     public Task get(long id) {

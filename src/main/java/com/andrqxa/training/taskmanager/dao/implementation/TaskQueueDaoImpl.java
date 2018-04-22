@@ -20,14 +20,22 @@ import com.andrqxa.training.taskmanager.enums.Status;
 import com.andrqxa.training.taskmanager.manager.Person;
 import com.andrqxa.training.taskmanager.manager.Task;
 import com.andrqxa.training.taskmanager.manager.TaskQueue;
+import com.andrqxa.training.taskmanager.utils.HibernateUtil;
 import java.time.LocalDateTime;
 import java.util.List;
+import org.hibernate.SessionFactory;
 
 /**
  *
  * @author Andrey Pugachenko <andrqxa@gmail.com>
  */
 public class TaskQueueDaoImpl implements TaskQueueDao {
+
+    private final SessionFactory sessionFactory;
+
+    public TaskQueueDaoImpl() {
+        sessionFactory = HibernateUtil.getSessionFactory();
+    }
 
     @Override
     public TaskQueue get(long id) {
