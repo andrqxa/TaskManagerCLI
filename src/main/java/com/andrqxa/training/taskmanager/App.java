@@ -17,7 +17,7 @@ package com.andrqxa.training.taskmanager;
 
 import com.andrqxa.training.taskmanager.manager.Person;
 import com.andrqxa.training.taskmanager.manager.Task;
-import com.andrqxa.training.taskmanager.manager.TaskQueueElement;
+import com.andrqxa.training.taskmanager.manager.TaskQueue;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
@@ -38,7 +38,7 @@ public class App {
             task.setName("Finished housework");
             task.setDescription("I have to finish my housework till 7p.m.");
 
-            TaskQueueElement taskQueueElement = (TaskQueueElement) ctx.getBean("taskQueueElement");
+            TaskQueue taskQueueElement = (TaskQueue) ctx.getBean("taskQueueElement");
             taskQueueElement.setPerson(person);
             taskQueueElement.setTask(task);
 

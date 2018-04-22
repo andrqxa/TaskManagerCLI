@@ -23,7 +23,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.builder.EqualsBuilder;
@@ -55,8 +54,6 @@ public class Person implements Serializable, Comparable<Person> {
 
     @Column(name = "patronic")
     private String patronic;
-    @OneToOne
-    private TaskQueueElement taskQueueElement;
 
     public Person() {
 

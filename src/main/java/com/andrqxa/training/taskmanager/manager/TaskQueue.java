@@ -43,7 +43,7 @@ import org.springframework.stereotype.Component;
 @Scope("prototype")
 @Entity
 @Table(name = "taskqueue")
-public class TaskQueueElement implements Serializable, Comparable<TaskQueueElement> {
+public class TaskQueue implements Serializable, Comparable<TaskQueue> {
 
     @Id
     @Column(name = "id")
@@ -69,7 +69,7 @@ public class TaskQueueElement implements Serializable, Comparable<TaskQueueEleme
     @OneToOne(mappedBy = "taskQueueElement")
     private Task task;
 
-    public TaskQueueElement() {
+    public TaskQueue() {
         this.timeStart = LocalDateTime.now();
         this.status = INIT;
     }
@@ -136,11 +136,11 @@ public class TaskQueueElement implements Serializable, Comparable<TaskQueueEleme
         if (this == obj) {
             return true;
         }
-        if (!(obj instanceof TaskQueueElement)) {
+        if (!(obj instanceof TaskQueue)) {
             return false;
         }
 
-        TaskQueueElement other = (TaskQueueElement) obj;
+        TaskQueue other = (TaskQueue) obj;
 
         EqualsBuilder builder = new EqualsBuilder();
         builder.append(this.id, other.getId())
@@ -154,7 +154,7 @@ public class TaskQueueElement implements Serializable, Comparable<TaskQueueEleme
     }
 
     @Override
-    public int compareTo(TaskQueueElement taskQueue) {
+    public int compareTo(TaskQueue taskQueue) {
         return timeStart.compareTo(taskQueue.getTimeStart());
     }
 
